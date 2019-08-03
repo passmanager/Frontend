@@ -1,0 +1,151 @@
+:root {
+  --foreground-color: deepskyblue; /*Foreground color: title,*/
+  --background-color: white; /*Background color: login card,*/
+  --input-foreground-color: deepskyblue; /*Input foreground color: input caret, input text*/
+  --input-border-color: deepskyblue; /*Input border color:Inputs*/
+  --button-background-color: deepskyblue; /**/
+  --button-foreground-color: white; /*Button foreground color:button text*/
+  --shadow-color: rgba(0, 0, 0, 0.15); /*Box shadow color:login card shadow*/
+  --inset-shadow-color: black; /*Inset shadow color:login card*/
+  --inset-opacity: 0.05; /* Flat design shadow: login card*/
+  --selection-background-color: deepskyblue; /* Selection of text background color: inputs and text*/
+  --selection-foreground-color: white; /* Selection of text foreground color: inputs and text*/
+  --scale-factor: 2vh;
+  --color: deepskyblue; /* Background color of page*/
+  --color-mobile: white;
+  --icon-size: 2.5vh;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+* {
+  font-family: "Dosis", sans-serif;
+  font-size: var(--scale-factor);
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color);
+}
+
+.round-button {
+  background-color: var(--button-background-color);
+  border: 0;
+  margin: 0.5vh 0;
+  border-radius: 2em;
+  padding: 0.5em 0;
+  color: var(--button-foreground-color);
+  cursor: pointer;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: var(--color);
+  overflow-y: auto;
+}
+#title {
+  margin: 0.5vh auto;
+  font-size: 1.5em;
+}
+.card {
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  position: relative;
+  box-shadow: 0 0 15px 7px var(--shadow-color);
+  
+  border-radius: 2em;
+  overflow: hidden;padding: 1em;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  background-color: var(--inset-shadow-color);
+  pointer-events: none;
+  opacity: var(--inset-opacity);
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+
+.login-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+
+  
+}
+
+.password-card img {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"] {
+  border: 0.2em var(--input-border-color) solid;
+  border-radius: 2em;
+  padding: 0.5em;
+  color: var(--input-foreground-color);
+  caret-color: var(--input-foreground-color);
+  margin: 0.5vh 0;
+  width: 100%;
+}
+
+*::selection {
+  background-color: var(--selection-background-color);
+  color: var(--selection-foreground-color);
+}
+
+.entry-button {
+  position: absolute;
+  left: 95%;
+  top: 50%;
+  transform: translate(-95%, -50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.2em;
+}
+
+.passwords {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1em;
+}
+
+
+
+@media only screen and (orientation: portrait), (max-width: 600px){
+  * {
+    font-size: 20px;
+  }
+  .card::after {
+    visibility: hidden;
+  }
+  .card{
+    width:100%;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+  .login-card {
+    width: 80%;
+    padding: 0;
+    box-shadow: none;
+  }
+  .container {
+    background-color: var(--color-mobile);
+  }
+}
+
+
