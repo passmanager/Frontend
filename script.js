@@ -38,15 +38,12 @@ function getAll() {
 
 function appendPasswordsList(data) {
   $(data).each(function(i, single) {
-    for (var i = 10; i >= 0; i--) {
-      $(".passwords").append(
+    console.log(i, single);
+    $(".passwords").append(
       '<div class="card password-card password"><img src="http://www.pkdinamo.org.rs/wp-content/uploads/2018/09/no-image.jpg">' +
         single +
         "</div>"
-      );
-    }
-    console.log(i, single);
-    
+    );
   });
 }
 
