@@ -100,8 +100,8 @@ $(document).ready(function() {
   var user = username;
   $("#username").val(user);
 
-  document.getElementById("username").value = "hawerner"; //delete this too
-  document.getElementById("login-button").click(); //delete this line
+  // document.getElementById("username").value = "hawerner"; //delete this too
+  // document.getElementById("login-button").click(); //delete this line
 });
 
 function visibility(me) {
