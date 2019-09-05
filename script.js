@@ -1,8 +1,9 @@
 var url = "http://localhost:8000/user/";
+var username = "";
 var password = "";
 
 function getAll() {
-  var user = window.location.hash.substr(1);
+  var user = username;
   passwordHash = sha512(password);
   console.log(sha512(password));
   $.ajax({
@@ -48,7 +49,7 @@ function appendPasswordsList(data) {
 }
 
 function getSingle(single) {
-  var user = window.location.hash.substr(1);
+  var user = username;
   passwordHash = sha512(password);
   $.ajax({
     url: url + user + "/" + single,
@@ -72,7 +73,7 @@ function getSingle(single) {
 
 function login() {
   var user = $("#username").val();
-  window.location = "#" + user;
+  username = user;
   var pass = $("#password").val();
   //checkIfIsGood
   password = pass;
@@ -96,7 +97,7 @@ $(document).ready(function() {
   });
 
   document.getElementsByClassName("container")[1].style.display = "none";
-  var user = window.location.hash.substr(1);
+  var user = username;
   $("#username").val(user);
 
   document.getElementById("username").value = "hawerner"; //delete this too
