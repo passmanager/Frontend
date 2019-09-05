@@ -1,4 +1,4 @@
-var url = "http://0.0.0.0:8000/user/";
+var url = "http://localhost:8000/user/";
 var password = "";
 
 function getAll() {
@@ -6,7 +6,7 @@ function getAll() {
   passwordHash = sha512(password);
   console.log(sha512(password));
   $.ajax({
-    url: url + user, //gentoo-h je hostname moje masine, treba da stoji domen ovde
+    url: url + user, 
     dataType: "json",
     contentType: "json;charset=UTF-8",
     data: { key: passwordHash },
@@ -51,7 +51,7 @@ function getSingle(single) {
   var user = window.location.hash.substr(1);
   passwordHash = sha512(password);
   $.ajax({
-    url: url + user + "/" + single, //gentoo-h je hostname moje masine, treba da stoji domen ovde
+    url: url + user + "/" + single,
     dataType: "json",
     contentType: "json",
     data: { key: passwordHash },
