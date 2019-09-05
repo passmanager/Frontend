@@ -38,12 +38,15 @@ function getAll() {
 
 function appendPasswordsList(data) {
   $(data).each(function(i, single) {
-    console.log(i, single);
-    $(".passwords").append(
+    for (var i = 10; i >= 0; i--) {
+      $(".passwords").append(
       '<div class="card password-card password"><img src="http://www.pkdinamo.org.rs/wp-content/uploads/2018/09/no-image.jpg">' +
         single +
         "</div>"
-    );
+      );
+    }
+    console.log(i, single);
+    
   });
 }
 
@@ -99,8 +102,8 @@ $(document).ready(function() {
   var user = window.location.hash.substr(1);
   $("#username").val(user);
 
-  // document.getElementById("username").value = "hawerner"; //delete this too
-  // document.getElementById("login-button").click(); //delete this line
+  document.getElementById("username").value = "hawerner"; //delete this too
+  document.getElementById("login-button").click(); //delete this line
 });
 
 function visibility(me) {

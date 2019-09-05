@@ -47,7 +47,8 @@ body {
   width: 100%;
   position: relative;
   background-color: var(--color);
-  overflow-y: auto;
+  overflow-y: hidden;
+
 }
 #title {
   margin: 0.5vh auto;
@@ -128,12 +129,6 @@ input[type="password"] {
 
 
 
-
-
-
-
-
-
 header{
   height:3em;
   background-color: white;
@@ -154,34 +149,62 @@ a{
 }
 .header-links *{
   cursor:pointer;
+  color: deepskyblue;
   user-select: none;
 }
+
+
 
 aside{
   background-color: #ff4000;
   width:10em;
+  /*height:100%;*/
   display:flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  height: 100%;
 }
 
-aside a{
+aside *{
   color:white;
   padding:1em;
 }
 
 .content{
-  display: flex;
-  height: calc(100vh-var(--scale-factor));
+  display:flex;
+  position: relative;
+  height: 100%;
+
 }
+
 .passwords-container{
   overflow-y: auto;
-  flex: 1;
-  padding:1em;
+  width:100%;
+  padding:1em 1em 10em 1em;
 }
+
+
 .logo{
   height: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
