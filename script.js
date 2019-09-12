@@ -2,15 +2,33 @@ var url = "http://localhost:8000/user/";
 var username = "";
 var password = "";
 
-function getAll() {
+function getSalt(callbackFunction){
+  $.ajax({
+    url: url + "getSalt/" + username, //gentoo-h je hostname moje masine, treba da stoji domen ovde
+    dataType: "json",
+    contentType: "json;charset=UTF-8",
+    type: "GET",
+    async: true,
+    success: function(data){
+      callbackFunction(data)
+    },
+    error: function(){
+      alert("error");
+    }
+  })
+
+}
+function getAll(input) {
   var user = username;
-  passwordHash = sha512(password);
-  console.log(sha512(password));
+  var passwordHash = sha512(password)
+  for (var i = 0; i < 512; ++i){
+    passwordHash = sha512(passwordHash + input['salt'])
+  }
   $.ajax({
     url: url + user, 
     dataType: "json",
     contentType: "json;charset=UTF-8",
-    data: { key: passwordHash },
+    data: {"key": passwordHash, "salt_id": input['salt_id']},
     type: "GET",
     async: true,
     success: function(data) {
@@ -77,7 +95,7 @@ function login() {
   var pass = $("#password").val();
   //checkIfIsGood
   password = pass;
-  getAll();
+  getSalt(getAll);
 }
 
 $(document).ready(function() {
