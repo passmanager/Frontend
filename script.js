@@ -5,8 +5,6 @@ var password = "";
 /* Load WebAssembly */
 
 Module.onRuntimeInitialized = function() {
-  console.log(Module.__Z3fibi(30));
-  fib = Module.__Z3fibi
   passreadd = Module._passread
   passgenn = Module._passread
 }
