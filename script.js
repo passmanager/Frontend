@@ -7,8 +7,8 @@ var password = "";
 Module.onRuntimeInitialized = function() {
   console.log(Module.__Z3fibi(30));
   fib = Module.__Z3fibi
-  print = Module.__Z5printPc
-  passreadd = Module.__Z8passreadPcS_S_
+  passreadd = Module._passread
+  passgenn = Module._passread
 }
 
 function passread(str, key, salt){
@@ -31,6 +31,29 @@ function passread(str, key, salt){
 
   return resValue;
 }
+
+function passgen(str, key, salt){
+  // Create a pointer using the 'Glue' method and the String value
+  var ptrStr  = allocate(intArrayFromString(str), 'i8', ALLOC_NORMAL);
+  var ptrKey = allocate(intArrayFromString(key), 'i8', ALLOC_NORMAL);
+  var ptrSalt = allocate(intArrayFromString(salt), 'i8', ALLOC_NORMAL);
+
+  // Call the method passing the pointer
+  var retPtr = passgenn(ptrStr, ptrKey, ptrSalt);
+
+  // Retransform back your pointer to string using 'Glue' method
+  console.log(retPtr);
+  var resValue = UTF8ToString(retPtr);
+
+  // Free the memory allocated by 'allocate'
+  _free(ptrStr);
+  _free(ptrKey);
+  _free(ptrSalt);
+
+
+  return resValue;
+}
+
 
 /* WebAssembly loaded */
 

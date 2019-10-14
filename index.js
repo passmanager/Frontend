@@ -1220,11 +1220,11 @@ function updateGlobalBufferViews() {
 
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 23344,
+    STACK_BASE = 23312,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 5266224,
-    DYNAMIC_BASE = 5266224,
-    DYNAMICTOP_PTR = 23312;
+    STACK_MAX = 5266192,
+    DYNAMIC_BASE = 5266192,
+    DYNAMICTOP_PTR = 23280;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1704,7 +1704,7 @@ var ASM_CONSTS = [];
 
 
 
-// STATICTOP = STATIC_BASE + 22320;
+// STATICTOP = STATIC_BASE + 22288;
 /* global initializers */  __ATINIT__.push({ func: function() { globalCtors() } });
 
 
@@ -1715,7 +1715,7 @@ var ASM_CONSTS = [];
 
 
 /* no memory initializer */
-var tempDoublePtr = 23328
+var tempDoublePtr = 23296
 assert(tempDoublePtr % 8 == 0);
 
 function copyTempFloat(ptr) { // functions, because inlining this code increases code size too much
@@ -5667,11 +5667,11 @@ asm["__Z13base64_decodeRKNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocato
   return real___Z13base64_decodeRKNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE.apply(null, arguments);
 };
 
-var real___Z3fibi = asm["__Z3fibi"];
-asm["__Z3fibi"] = function() {
+var real___Z13base64_encodePKhj = asm["__Z13base64_encodePKhj"];
+asm["__Z13base64_encodePKhj"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real___Z3fibi.apply(null, arguments);
+  return real___Z13base64_encodePKhj.apply(null, arguments);
 };
 
 var real___Z5cryptRNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEES5_S5_ = asm["__Z5cryptRNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEES5_S5_"];
@@ -5700,13 +5700,6 @@ asm["__Z6sha512NSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE"] 
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return real___Z6sha512NSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE.apply(null, arguments);
-};
-
-var real___Z8passreadPcS_S_ = asm["__Z8passreadPcS_S_"];
-asm["__Z8passreadPcS_S_"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real___Z8passreadPcS_S_.apply(null, arguments);
 };
 
 var real___ZL9is_base64h = asm["__ZL9is_base64h"];
@@ -8614,13 +8607,6 @@ asm["__ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEED2Ev"] = function() {
   return real___ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEED2Ev.apply(null, arguments);
 };
 
-var real___ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi = asm["__ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi"];
-asm["__ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real___ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi.apply(null, arguments);
-};
-
 var real___ZNSt3__213basic_ostreamIwNS_11char_traitsIwEEED0Ev = asm["__ZNSt3__213basic_ostreamIwNS_11char_traitsIwEEED0Ev"];
 asm["__ZNSt3__213basic_ostreamIwNS_11char_traitsIwEEED0Ev"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
@@ -10301,11 +10287,11 @@ asm["___cxx_global_var_init"] = function() {
   return real____cxx_global_var_init.apply(null, arguments);
 };
 
-var real____cxx_global_var_init_80 = asm["___cxx_global_var_init_80"];
-asm["___cxx_global_var_init_80"] = function() {
+var real____cxx_global_var_init_77 = asm["___cxx_global_var_init_77"];
+asm["___cxx_global_var_init_77"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real____cxx_global_var_init_80.apply(null, arguments);
+  return real____cxx_global_var_init_77.apply(null, arguments);
 };
 
 var real____dynamic_cast = asm["___dynamic_cast"];
@@ -10714,13 +10700,6 @@ asm["_fwrite"] = function() {
   return real__fwrite.apply(null, arguments);
 };
 
-var real__getChar = asm["_getChar"];
-asm["_getChar"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__getChar.apply(null, arguments);
-};
-
 var real__getc = asm["_getc"];
 asm["_getc"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
@@ -10873,6 +10852,20 @@ asm["_pad_175"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return real__pad_175.apply(null, arguments);
+};
+
+var real__passgen = asm["_passgen"];
+asm["_passgen"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return real__passgen.apply(null, arguments);
+};
+
+var real__passread = asm["_passread"];
+asm["_passread"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return real__passread.apply(null, arguments);
 };
 
 var real__pop_arg_172 = asm["_pop_arg_172"];
@@ -11270,10 +11263,10 @@ var __Z13base64_decodeRKNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocator
   return Module["asm"]["__Z13base64_decodeRKNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE"].apply(null, arguments)
 };
 
-var __Z3fibi = Module["__Z3fibi"] = function() {
+var __Z13base64_encodePKhj = Module["__Z13base64_encodePKhj"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["__Z3fibi"].apply(null, arguments)
+  return Module["asm"]["__Z13base64_encodePKhj"].apply(null, arguments)
 };
 
 var __Z5cryptRNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEES5_S5_ = Module["__Z5cryptRNSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEES5_S5_"] = function() {
@@ -11298,12 +11291,6 @@ var __Z6sha512NSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE = M
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["__Z6sha512NSt3__212basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE"].apply(null, arguments)
-};
-
-var __Z8passreadPcS_S_ = Module["__Z8passreadPcS_S_"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["__Z8passreadPcS_S_"].apply(null, arguments)
 };
 
 var __ZL9is_base64h = Module["__ZL9is_base64h"] = function() {
@@ -13796,12 +13783,6 @@ var __ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEED2Ev = Module["__ZNSt3__213b
   return Module["asm"]["__ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEED2Ev"].apply(null, arguments)
 };
 
-var __ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi = Module["__ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["__ZNSt3__213basic_ostreamIcNS_11char_traitsIcEEElsEi"].apply(null, arguments)
-};
-
 var __ZNSt3__213basic_ostreamIwNS_11char_traitsIwEEED0Ev = Module["__ZNSt3__213basic_ostreamIwNS_11char_traitsIwEEED0Ev"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -15242,10 +15223,10 @@ var ___cxx_global_var_init = Module["___cxx_global_var_init"] = function() {
   return Module["asm"]["___cxx_global_var_init"].apply(null, arguments)
 };
 
-var ___cxx_global_var_init_80 = Module["___cxx_global_var_init_80"] = function() {
+var ___cxx_global_var_init_77 = Module["___cxx_global_var_init_77"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["___cxx_global_var_init_80"].apply(null, arguments)
+  return Module["asm"]["___cxx_global_var_init_77"].apply(null, arguments)
 };
 
 var ___dynamic_cast = Module["___dynamic_cast"] = function() {
@@ -15596,12 +15577,6 @@ var _fwrite = Module["_fwrite"] = function() {
   return Module["asm"]["_fwrite"].apply(null, arguments)
 };
 
-var _getChar = Module["_getChar"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["_getChar"].apply(null, arguments)
-};
-
 var _getc = Module["_getc"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -15744,6 +15719,18 @@ var _pad_175 = Module["_pad_175"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["_pad_175"].apply(null, arguments)
+};
+
+var _passgen = Module["_passgen"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["_passgen"].apply(null, arguments)
+};
+
+var _passread = Module["_passread"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["_passread"].apply(null, arguments)
 };
 
 var _pop_arg_172 = Module["_pop_arg_172"] = function() {
