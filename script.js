@@ -2,15 +2,86 @@ var url = "http://localhost:8000/user/";
 var username = "";
 var password = "";
 
-function getAll() {
+/* Load WebAssembly */
+
+Module.onRuntimeInitialized = function() {
+  passreadd = Module._passread
+  passgenn = Module._passread
+}
+
+function passread(str, key, salt){
+  // Create a pointer using the 'Glue' method and the String value
+  var ptrStr  = allocate(intArrayFromString(str), 'i8', ALLOC_NORMAL);
+  var ptrKey = allocate(intArrayFromString(key), 'i8', ALLOC_NORMAL);
+  var ptrSalt = allocate(intArrayFromString(salt), 'i8', ALLOC_NORMAL);
+
+  // Call the method passing the pointer
+  var retPtr = passreadd(ptrStr, ptrKey, ptrSalt);
+
+  // Retransform back your pointer to string using 'Glue' method
+  var resValue = UTF8ToString(retPtr);
+
+  // Free the memory allocated by 'allocate' 
+  _free(ptrStr);   
+  _free(ptrKey);   
+  _free(ptrSalt);   
+
+
+  return resValue;
+}
+
+function passgen(str, key, salt){
+  // Create a pointer using the 'Glue' method and the String value
+  var ptrStr  = allocate(intArrayFromString(str), 'i8', ALLOC_NORMAL);
+  var ptrKey = allocate(intArrayFromString(key), 'i8', ALLOC_NORMAL);
+  var ptrSalt = allocate(intArrayFromString(salt), 'i8', ALLOC_NORMAL);
+
+  // Call the method passing the pointer
+  var retPtr = passgenn(ptrStr, ptrKey, ptrSalt);
+
+  // Retransform back your pointer to string using 'Glue' method
+  console.log(retPtr);
+  var resValue = UTF8ToString(retPtr);
+
+  // Free the memory allocated by 'allocate'
+  _free(ptrStr);
+  _free(ptrKey);
+  _free(ptrSalt);
+
+
+  return resValue;
+}
+
+
+/* WebAssembly loaded */
+
+function getSalt(callbackFunction, additionalVar){
+  $.ajax({
+    url: url + "getSalt/" + username, //gentoo-h je hostname moje masine, treba da stoji domen ovde
+    dataType: "json",
+    contentType: "json;charset=UTF-8",
+    type: "GET",
+    async: true,
+    success: function(data){
+      callbackFunction(data, additionalVar)
+    },
+    error: function(){
+      alert("error");
+    }
+  })
+
+}
+function getAll(input) {
   var user = username;
-  passwordHash = sha512(password);
-  console.log(sha512(password));
+  var passwordHash = sha512(password)
+  for (var i = 0; i < 512; ++i){
+    passwordHash = sha512(passwordHash + input['salt'])
+  }
   $.ajax({
     url: url + user, 
     dataType: "json",
     contentType: "json;charset=UTF-8",
-    data: { key: passwordHash },
+    data: {"key": passwordHash, "salt_id": input['salt_id']},
     type: "GET",
     async: true,
     success: function(data) {
@@ -23,19 +94,6 @@ function getAll() {
     }
   });
 }
-
-// function appendPasswordsList(data) {
-//   $(data).each(function(i, single) {
-//     console.log(i, single);
-//     $(".passwords").append(
-//       '<button class="password" onClick="getSingle(\'' +
-//         single +
-//         "')\">" +
-//         single +
-//         "</button>"
-//     );
-//   });
-// }
 
 function appendPasswordsList(data) {
   $(data).each(function(i, single) {
@@ -53,14 +111,17 @@ function appendPasswordsList(data) {
   );
 }
 
-function getSingle(single) {
+function getSingle(input, single) {
   var user = username;
   passwordHash = sha512(password);
+  for (var i = 0; i < 512; ++i){
+    passwordHash = sha512(passwordHash + input['salt'])
+  }
   $.ajax({
     url: url + user + "/" + single,
     dataType: "json",
     contentType: "json",
-    data: { key: passwordHash },
+    data: { "key": passwordHash, "salt_id": input['salt_id']},
     type: "GET",
     async: true,
     success: function(data) {
@@ -69,6 +130,7 @@ function getSingle(single) {
       $("#single").append("<br/>");
       $("#single").append(passread(data.password, password, data.passwordSalt));
       $("#single").append("<br/>");
+      console.log(passread(data.username, password, data.usernameSalt))
     },
     error: function() {
       alert("error");
@@ -82,7 +144,7 @@ function login() {
   var pass = $("#password").val();
   //checkIfIsGood
   password = pass;
-  getAll();
+  getSalt(getAll);
 }
 
 $(document).ready(function() {
@@ -93,6 +155,7 @@ $(document).ready(function() {
       document.getElementById("login-button").click();
     }
   });
+  input.focus()
   input = document.getElementById("password");
   input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
