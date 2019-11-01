@@ -46,6 +46,11 @@ function appendPasswordsList(data) {
         "</div>"
     );
   });
+  $(".passwords").append(
+    '<div class="card password-card password"><img src="http://www.pkdinamo.org.rs/wp-content/uploads/2018/09/no-image.jpg" onClick="addNew();">' +
+    single +
+    "</div>"
+  );
 }
 
 function getSingle(single) {
@@ -121,4 +126,9 @@ function changeView(me) {
   } else {
     me.innerHTML = "apps";
   }
+}
+
+
+function addNew(){
+  alert("Hey");
 }
