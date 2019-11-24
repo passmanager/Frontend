@@ -14,6 +14,9 @@
   --color: deepskyblue; /* Background color of page*/
   --color-mobile: white;
   --icon-size: 2.5vh;
+  --header-links-width: 14em; /* Header links width, class:.header-links*/
+  --revealer-width:20vw;
+  --revealer-height:10vh;
 }
 
 *:focus {
@@ -64,7 +67,9 @@ body {
   padding: 1em;
   overflow: hidden;
 }
-
+.clickable{
+  cursor:pointer;
+}
 .card::after {
   content: "";
   width: 100%;
@@ -85,14 +90,18 @@ body {
   display: flex;
   flex-direction: column;  
 }
-
-.password-card{
-  text-align: center;
+.password-title{
+  display: inline;
+  cursor: pointer;
 }
-.password-card img {
+.password-card{
+  /*text-align: center;*/
+}
+.password-card img{
   width: 100%;
   border-radius: 1em;
 }
+
 
 input[type="text"],
 input[type="password"] {
@@ -123,11 +132,34 @@ input[type="password"] {
 .passwords {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1em;
 }
+.password-icon{
+  float: right;
+  cursor: pointer;
+}
 
+.reveal-box{
+  position: absolute;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
 
+  display: none;
+}
+
+.revealer{
+  background-color: red;
+  width:var(--revealer-width);
+  height: var(--revealer-height);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
 
 header{
   height:3em;
@@ -141,7 +173,7 @@ a{
   text-decoration: none;
 }
 .header-links{
-  width: 10em;
+  width: var(--header-links-width);
   display: flex;
   justify-content: space-around;
   margin-right: 1em;
@@ -190,25 +222,9 @@ aside *{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.add-card{
+  text-align: center;
+}
 
 
 @media only screen and (orientation: portrait), (max-width: 600px){

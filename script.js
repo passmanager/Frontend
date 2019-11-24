@@ -99,15 +99,14 @@ function appendPasswordsList(data) {
   $(data).each(function(i, single) {
     console.log(i, single);
     $(".passwords").append(
-      '<div class="card password-card password"><img src="http://www.pkdinamo.org.rs/wp-content/uploads/2018/09/no-image.jpg">' +
+      '<div class="card password-card password-name"><img src="http://www.pkdinamo.org.rs/wp-content/uploads/2018/09/no-image.jpg"><p class="password-title" onClick="show_pwd();">' +
         single +
-        "</div>"
+        '</p><i class="material-icons password-icon" onClick="edit_pwd();">edit</i><i class="material-icons password-icon" onClick="delete_pwd();">delete</i></div>'
     );
   });
+
   $(".passwords").append(
-    '<div class="card password-card password"><img src="http://www.pkdinamo.org.rs/wp-content/uploads/2018/09/no-image.jpg" onClick="addNew();">' +
-    single +
-    "</div>"
+    '<div class="card password-card clickable add-card" onClick="add_pwd();"> add </div>'
   );
 }
 
@@ -168,8 +167,8 @@ $(document).ready(function() {
   var user = username;
   $("#username").val(user);
 
-  // document.getElementById("username").value = "hawerner"; //delete this too
-  // document.getElementById("login-button").click(); //delete this line
+  document.getElementById("username").value = "cigla"; //delete this too
+  document.getElementById("login-button").click(); //delete this line
 });
 
 function visibility(me) {
@@ -186,12 +185,23 @@ function visibility(me) {
 function changeView(me) {
   if (me.textContent === "apps") {
     me.innerHTML = "reorder";
+    alert("LIST_CODE");
   } else {
     me.innerHTML = "apps";
+    alert("TILES_CODE");
   }
 }
 
 
-function addNew(){
-  alert("Hey");
+function add_pwd(){
+  alert("ADD_FIELD");
+}
+function edit_pwd(){
+  alert("EDIT_FIELD");
+}
+function delete_pwd(){
+  alert("DELETE_FIELD");
+}
+function show_pwd(){
+  alert("SHOW_FIELD")
 }
